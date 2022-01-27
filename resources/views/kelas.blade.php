@@ -3,6 +3,12 @@
 @section('content')
     <div class="flex flex-col space-y-7 py-8 px-2">
         <div class="hidden md:block text-2xl">Kelas</div>
+        @if ($message = Session::get('success'))
+            <div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base" role="alert">
+                {{ $message }}
+            </div>
+        @endif
+
         <div class="rounded-lg shadow-md p-5">
             <a href="{{ route('kelas.create') }}"
                 class="w-28 px-6 pt-2.5 pb-2 bg-blue-600 text-white font-medium text-xs leading-normal uppercase rounded hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center space-x-2">
@@ -38,7 +44,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($kelas as $index => $k)
-                                        <tr class="bg-gray-100 border-b">
+                                        <tr class="border-b">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                 {{ $index + 1 }}</td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

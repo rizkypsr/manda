@@ -31,4 +31,45 @@ class KelasController extends Controller
             "jurusan" => $jurusan
         ]);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama_kelas' => 'required',
+            'semester' => 'required',
+            'thn_ajaran' => 'required',
+            'jurusan' => 'required',
+        ]);
+
+        $kelas = new Kelas();
+
+        $kelas->nama_kelas = $request->nama_kelas;
+        $kelas->semester = $request->semester;
+        $kelas->thn_ajaran = $request->thn_ajaran;
+        $kelas->jurusan_id = $request->jurusan;
+
+        $kelas->save();
+
+        return redirect()->route('kelas.index')
+            ->with('success', 'Berhasil menambahkan data kelas');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Kelas $kelas)
+    {
+        $kelas->delete();
+
+        return redirect()->route("kelas.index")->with('success', 'Berhasil menghapus data kelas');
+    }
 }
