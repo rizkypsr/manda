@@ -17,6 +17,12 @@ class Jurusan extends Model
         return $this->hasMany(Kelas::class);
     }
 
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class);
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

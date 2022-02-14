@@ -12,16 +12,21 @@ class Guru extends Model
 
     protected $table = "guru";
 
+    public function mapel()
+    {
+        return $this->belongsTo(Mapel::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'guru',
+        'id',
         'nama_guru',
         'status',
-        'id_mapel',
+        'mapel_id',
         'detail_guru_id',
         'thn_bertugas'
     ];

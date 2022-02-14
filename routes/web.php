@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
@@ -26,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/kelas', KelasController::class);
     Route::resource('/mapel', MapelController::class);
     Route::resource('/siswa', SiswaController::class);
+    Route::resource('/guru', GuruController::class);
+
+    Route::get('/{id}/detail-kelas', [KelasController::class, 'detail'])->name('kelas.detail');
 });
 
 require __DIR__ . '/auth.php';

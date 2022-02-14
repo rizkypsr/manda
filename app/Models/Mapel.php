@@ -12,17 +12,17 @@ class Mapel extends Model
 
     protected $table = "mapel";
 
+    public function guru()
+    {
+        return $this->hasMany(Guru::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'Mapel',
-        'nama_Mapel',
-        'status',
-        'id_mapel',
-        'detail_Mapel_id',
-        'thn_bertugas'
+        'nama_mapel',
     ];
 }

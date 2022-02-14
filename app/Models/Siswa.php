@@ -12,17 +12,34 @@ class Siswa extends Model
 
     protected $table = "siswa";
 
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class);
+    }
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
+
+    public function detail_siswa()
+    {
+        return $this->belongsTo(DetailSiswa::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'Siswa',
-        'nama_Siswa',
-        'status',
-        'id_Siswa',
-        'detail_Siswa_id',
-        'thn_bertugas'
+        'id',
+        'nama_siswa',
+        'jurusan_id',
+        'kelas_id',
+        'detail_siswa_id',
+        'detail_ayah_id',
+        'detail_ibu_id',
+        'angkatan'
     ];
 }

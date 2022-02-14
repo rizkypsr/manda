@@ -76,7 +76,9 @@ class InformasiController extends Controller
      */
     public function edit(Informasi $informasi)
     {
-        return view('edit-informasi', compact("informasi"));
+        return response()->json([
+            'data' => $informasi
+        ]);
     }
 
     /**
