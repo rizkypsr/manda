@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/guru', GuruController::class);
 
     Route::get('/{id}/detail-kelas', [KelasController::class, 'detail'])->name('kelas.detail');
+    Route::post('/kelas/pindah', [KelasController::class, 'pindah'])->name('kelas.pindah');
 });
 
 require __DIR__ . '/auth.php';

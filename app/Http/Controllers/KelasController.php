@@ -21,10 +21,28 @@ class KelasController extends Controller
     public function detail(int $id)
     {
         $siswa = Siswa::with(['detail_siswa'])->where('kelas_id', $id)->get();
+        $kelas = Kelas::all();
 
         return view('detail-kelas', [
-            "siswa" => $siswa
+            "siswa" => $siswa,
+            "kelas" => $kelas
         ]);
+    }
+
+    public function pindah(Request $request)
+    {
+        $request->validate([
+            'kelas' => 'required',
+            'siswa' => 'required',
+        ]);
+
+        foreach ($request->siswa as $data) {
+            $siswa = Siswa::find($data);
+            $siswa->kelas_id = $request->kelas;
+            $siswa->save();
+        }
+
+        return route('kelas.index');
     }
 
     /**
